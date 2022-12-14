@@ -7,13 +7,14 @@
     <title>XTreme Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+        var run = true;
+        var userRocks = 5;
+        var userPapers = 5;
+        var userScissors = 5;
+        var comRocks = 5;
+        var comPapers = 5;
+        var comScissors = 5;
         function initialize() {
-            var userRocks = 5;
-            var userPapers = 5;
-            var userScissors = 5;
-            var comRocks = 5;
-            var comPapers = 5;
-            var comScissors = 5;
             var board = document.getElementById("board");
             var textbox = document.getElementById("textbox");
             var pRock = document.getElementById("pRock");
@@ -33,15 +34,14 @@
             var cImg = document.getElementById("cImg");
             var pItem = document.getElementById("pItem");
             var cItem = document.getElementById("cItem");
-            var run = true;
         }
         function computerChoice() {
             return parseInt(Math.random() * 3 + 1);
         }
         function playerChoice(choice) {
-            console.log(run);
-            if (run) {
-                console.log(choice);
+            //console.log(run);
+            if (true) {
+                //console.log(choice);
                 if (choice==1) {
                     pImg.src = "rock.png";
                     pImg.style.width = "175px";
@@ -74,20 +74,153 @@
                     cImg.style.height = "100px";
                 }
                 run = false;
-                setTimeOut(evaluateWinner(choice, cChoice),2000)
+                evaluateWinner(choice, cChoice);
+                hideEmpties();
             }
         }
         function evaluateWinner(p, c) {
-            if (p==1 && c==2) {
-
+            if (p==c) {
+                pItem.style.border="";
+                cItem.style.border="";
+                if (p==1) {
+                    console.log("Both played rock, no winner.")
+                }
+                if (p==2) {
+                    console.log("Both played paper, no winner.")
+                }
+                if (p==3) {
+                    console.log("Both played scissors, no winner.")
+                }
+            }
+            else if (p==1 && c==3 || p==2 && c==1 || p==3 && c==2) {
+                pItem.style.border="2px solid black";
+                cItem.style.border="";
+                if (c==1) {
+                    userRocks++;
+                    pRockCounter.innerHTML=userRocks;
+                    comRocks--;
+                    cRockCounter.innerHTML=comRocks;
+                    console.log("User played paper, computer played rock. Player won.")
+                }
+                else if (c==2) {
+                    userPapers++;
+                    pPaperCounter.innerHTML=userPapers;
+                    comPapers--;
+                    cPaperCounter.innerHTML=comPapers;
+                    console.log("User played scissors, computer played paper. Player won.")
+                }
+                else {
+                    userScissors++;
+                    pScissorsCounter.innerHTML=userScissors;
+                    comScissors--;
+                    cScissorsCounter.innerHTML=comScissors;
+                    console.log("User played rock, computer played scissors. Player won.")
+                }
+            }
+            else {
+                cItem.style.border="2px solid black";
+                pItem.style.border="";
+                if (p==1) {
+                    comRocks++;
+                    cRockCounter.innerHTML=comRocks;
+                    userRocks--;
+                    pRockCounter.innerHTML=userRocks;
+                    console.log("User played rock, computer played paper. Computer won.")
+                }
+                else if (p==2) {
+                    comPapers++;
+                    cPaperCounter.innerHTML=comPapers;
+                    userPapers--;
+                    pPaperCounter.innerHTML=userPapers;
+                    console.log("User played paper, computer played scissors. Computer won.")
+                }
+                else {
+                    comScissors++;
+                    cScissorsCounter.innerHTML=comScissors;
+                    userScissors--;
+                    pScissorsCounter.innerHTML=userScissors;
+                    console.log("User played scissors, computer played rock. Computer won.")
+                }
             }
             run=true;
         }
+        function reset() {
+            console.clear();
+            run = true;
+            userRocks = 5;
+            userPapers = 5;
+            userScissors = 5;
+            comRocks = 5;
+            comPapers = 5;
+            comScissors = 5;
+            pRockCounter.innerHTML=userRocks;
+            pPaperCounter.innerHTML=userPapers;
+            pScissorsCounter.innerHTML=userScissors;
+            cRockCounter.innerHTML=comRocks;
+            cPaperCounter.innerHTML=comPapers;
+            cScissorsCounter.innerHTML=comScissors;
+            pImg.src="transparent.png";
+            cImg.src="transparent.png";
+            pItem.style.border="";
+            cItem.style.border="";
+        }
+        function hideEmpties() {
+            if (userRocks>0) {
+                pRock.src="rock.png";
+                pRockCounter.style.display="inline";
+            }
+            else {
+                pRock.src="transparent.png";
+                pRockCounter.style.display="none";
+            }
+            if (userPapers>0) {
+                pPaper.src="paper.png";
+                pPaperCounter.style.display="inline";
+            }
+            else {
+                pPaper.src="transparent.png";
+                pPaperCounter.style.display="none";
+            }
+            if (userScissors>0) {
+                pScissors.src="scissors.png";
+                pScissorsCounter.style.display="inline";
+            }
+            else {
+                pScissors.src="transparent.png";
+                pScissorsCounter.style.display="none";
+            }
+            if (comRocks>0) {
+                cRock.src="rock.png";
+                cRockCounter.style.display="inline";
+            }
+            else {
+                cRock.src="transparent.png";
+                cRockCounter.style.display="none";
+            }
+            if (comPapers>0) {
+                cPaper.src="paper.png";
+                cPaperCounter.style.display="inline";
+            }
+            else {
+                cPaper.src="transparent.png";
+                cPaperCounter.style.display="none";
+            }
+            if (comScissors>0) {
+                cScissors.src="scissors.png";
+                cScissorsCounter.style.display="inline";
+            }
+            else {
+                cScissors.src="transparent.png";
+                cScissorsCounter.style.display="none";
+            }
+        }
+        
     </script>
 </head>
 <body onload="initialize();">
     <div id="board">
         <div id="pItems">
+            <div>Player</div>
             <div class="container">
                 <div class="counter" id="pRockCounter">5</div>
                 <img id="pRock" src="rock.png" onclick="playerChoice(1);">
@@ -110,6 +243,7 @@
             </div>
         </div>
         <div id="cItems">
+            <div>Computer</div>
             <div class="container">
                 <img id="cRock" src="rock.png">
                 <div class="counter" id="cRockCounter">5</div>
@@ -124,7 +258,7 @@
             </div>
         </div>
     </div>
-    <div id="textbox"></div>
-</body>
+    <div id="textbox">Click one of your items to fight the computer in rock-paper-scissors. The winner will take the loser's object. The numbers left of the objects indicate the number of those remaining. The game ends when one user has nothing left. If you ever play an item more than three times in a row, it will be removed from the game - so don't!</div>
+    <button onclick="reset();">Reset</button>
 </body>
 </html>
