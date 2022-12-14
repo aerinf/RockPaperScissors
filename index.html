@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XTreme Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
     <script>
         function initialize() {
             var userRocks = 5;
@@ -13,10 +14,117 @@
             var comRocks = 5;
             var comPapers = 5;
             var comScissors = 5;
+            var board = document.getElementById("board");
+            var textbox = document.getElementById("textbox");
+            var pRock = document.getElementById("pRock");
+            var pRockCounter = document.getElementById("pRockCounter");
+            var pPaper = document.getElementById("pPaper");
+            var pPaperCounter = document.getElementById("pPaperCounter");
+            var pScissors = document.getElementById("pScissors");
+            var pScissorsCounter = document.getElementById("pScissorsCounter");
+            var cRock = document.getElementById("cRock");
+            var cRockCounter = document.getElementById("cRockCounter");
+            var cPaper = document.getElementById("cPaper");
+            var cPaperCounter = document.getElementById("cPaperCounter");
+            var cScissors = document.getElementById("cScissors");
+            var cScissorsCounter = document.getElementById("cScissorsCounter");
+            var fightZone = document.getElementById("fightZone");
+            var pImg = document.getElementById("pImg");
+            var cImg = document.getElementById("cImg");
+            var pItem = document.getElementById("pItem");
+            var cItem = document.getElementById("cItem");
+            var run = true;
+        }
+        function computerChoice() {
+            return parseInt(Math.random() * 3 + 1);
+        }
+        function playerChoice(choice) {
+            console.log(run);
+            if (run) {
+                console.log(choice);
+                if (choice==1) {
+                    pImg.src = "rock.png";
+                    pImg.style.width = "175px";
+                    pImg.style.height = "175px";
+                }
+                else if (choice==2) {
+                    pImg.src = "paper.png";
+                    pImg.style.width = "90px";
+                    pImg.style.height = "115px";
+                }
+                else {
+                    pImg.src = "scissors.png";
+                    pImg.style.width = "120px";
+                    pImg.style.height = "100px";
+                }
+                let cChoice = computerChoice();
+                if (cChoice==1) {
+                    cImg.src = "rock.png";
+                    cImg.style.width = "175px";
+                    cImg.style.height = "175px";
+                }
+                else if (cChoice==2) {
+                    cImg.src = "paper.png";
+                    cImg.style.width = "90px";
+                    cImg.style.height = "115px";
+                }
+                else {
+                    cImg.src = "scissors.png";
+                    cImg.style.width = "120px";
+                    cImg.style.height = "100px";
+                }
+                run = false;
+                setTimeOut(evaluateWinner(choice, cChoice),2000)
+            }
+        }
+        function evaluateWinner(p, c) {
+            if (p==1 && c==2) {
+
+            }
+            run=true;
         }
     </script>
 </head>
 <body onload="initialize();">
-    
+    <div id="board">
+        <div id="pItems">
+            <div class="container">
+                <div class="counter" id="pRockCounter">5</div>
+                <img id="pRock" src="rock.png" onclick="playerChoice(1);">
+            </div>
+            <div class="container">
+                <div class="counter" id="pPaperCounter">5</div>
+                <img id="pPaper" src="paper.png" onclick="playerChoice(2);">
+            </div>
+            <div class="container">
+                <div class="counter" id="pScissorsCounter">5</div>
+                <img id="pScissors" src="scissors.png" onclick="playerChoice(3);">
+            </div>
+        </div>
+        <div id="fightZone">
+            <div id="pItem">
+                <img id="pImg" src="">
+            </div>
+            <div id="cItem">
+                <img id="cImg" src="">
+            </div>
+        </div>
+        <div id="cItems">
+            <div class="container">
+                <img id="cRock" src="rock.png">
+                <div class="counter" id="cRockCounter">5</div>
+            </div>
+            <div class="container">
+                <img id="cPaper" src="paper.png">
+                <div class="counter" id="cPaperCounter">5</div>
+            </div>
+            <div class="container">
+                <img id="cScissors" src="scissors.png">
+                <div class="counter" id="cScissorsCounter">5</div>
+            </div>
+        </div>
+    </div>
+    <div id="textbox"></div>
+</body>
 </body>
 </html>

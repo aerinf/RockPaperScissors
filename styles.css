@@ -1,0 +1,81 @@
+#pRock, #cRock {
+    width:175px;
+    height:175px;
+}
+#pPaper, #cPaper {
+    height:115px;
+    width:90px;
+    padding-bottom: 25px;
+}
+#pScissors, #cScissors {
+    height:100px;
+    width:120px;
+}
+#fightZone {
+    width:500px;
+}
+#pItems, #cItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#board {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:70px;
+}
+body {
+    background-color:antiquewhite;
+}
+#pItems {
+    border-right: 2px solid black;
+}
+#cItems {
+    border-left: 2px solid black;
+}
+#board {
+    margin-left:10%;
+    margin-right:10%;
+}
+#textbox {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    height:100px;
+    width:80%;
+    margin-top:30px;
+    margin-left:10%;
+    margin-right: 10%;
+    text-align: center;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:200px;
+}
+.counter {
+    font-family:'Trebuchet MS';
+    font-weight: bold;
+    font-size: 30pt;
+}
+#pPaperCounter, #pScissorsCounter {
+    margin-right:50px;
+}
+#cPaperCounter {
+    margin-left:53px;
+}
+#cScissorsCounter {
+    margin-left:30px;
+}
+#cPaper, #cScissors {
+    padding-left:30px;
+}
+#fightZone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height:400px;
+    align-items: center;
+}
