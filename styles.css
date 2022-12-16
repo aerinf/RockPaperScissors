@@ -94,3 +94,19 @@ div {
     font-size: 20pt;
     font-weight: bold;
 }
+#cItem {
+    width:175px;
+    height: 175px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#pItem {
+    width:175px;
+    height: 175px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

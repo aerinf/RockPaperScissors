@@ -36,11 +36,18 @@
             var cItem = document.getElementById("cItem");
         }
         function computerChoice() {
-            return parseInt(Math.random() * 3 + 1);
+            let choice = parseInt(Math.random() * 3 + 1);
+            if (choice==1 && comRocks>0) {
+                return 1;
+            }
+            else if (choice==2 && comPapers==2) {
+                return 2;
+            }
+            return 3;
         }
         function playerChoice(choice) {
-            //console.log(run);
-            if (true) {
+            console.log(run);
+            if (run) {
                 //console.log(choice);
                 if (choice==1) {
                     pImg.src = "rock.png";
@@ -73,9 +80,9 @@
                     cImg.style.width = "120px";
                     cImg.style.height = "100px";
                 }
-                run = false;
                 evaluateWinner(choice, cChoice);
                 hideEmpties();
+                gameOver();
             }
         }
         function evaluateWinner(p, c) {
@@ -142,7 +149,6 @@
                     console.log("User played scissors, computer played rock. Computer won.")
                 }
             }
-            run=true;
         }
         function reset() {
             console.clear();
@@ -168,26 +174,38 @@
             if (userRocks>0) {
                 pRock.src="rock.png";
                 pRockCounter.style.display="inline";
+                if (pRock.onclick="") {
+                    pRock.onclick=playerChoice(1);
+                }
             }
             else {
                 pRock.src="transparent.png";
                 pRockCounter.style.display="none";
+                pRock.onclick="";
             }
             if (userPapers>0) {
                 pPaper.src="paper.png";
                 pPaperCounter.style.display="inline";
+                if (pPaper.onclick="") {
+                    pPaper.onclick=playerChoice(2);
+                }
             }
             else {
                 pPaper.src="transparent.png";
                 pPaperCounter.style.display="none";
+                pPaper.onclick="";
             }
             if (userScissors>0) {
                 pScissors.src="scissors.png";
                 pScissorsCounter.style.display="inline";
+                if (pScissors.onclick="") {
+                    pScissors.onclick=playerChoice(3);
+                }
             }
             else {
                 pScissors.src="transparent.png";
                 pScissorsCounter.style.display="none";
+                pScissors.onclick="";
             }
             if (comRocks>0) {
                 cRock.src="rock.png";
@@ -212,6 +230,18 @@
             else {
                 cScissors.src="transparent.png";
                 cScissorsCounter.style.display="none";
+            }
+        }
+        function gameOver() {
+            if (userRocks==0 && userPapers==0 && userScissors==0) {
+                console.log("game lost reached");
+                textbox.innerHTML="The computer beat you this time. Press reset to play again."
+                run=false;
+            }
+            else if (comRocks==0 && comPapers==0 && comScissors==0) {
+                console.log("game won reached");
+                textbox.innerHTML="Good job, you beat the computer! Press reset to play again."
+                run=false;
             }
         }
         
