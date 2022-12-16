@@ -172,40 +172,28 @@
         }
         function hideEmpties() {
             if (userRocks>0) {
-                pRock.src="rock.png";
+                pRock.style.display="inline"
                 pRockCounter.style.display="inline";
-                if (pRock.onclick="") {
-                    pRock.onclick=playerChoice(1);
-                }
             }
             else {
-                pRock.src="transparent.png";
+                pRock.style.display="none";
                 pRockCounter.style.display="none";
-                pRock.onclick="";
             }
             if (userPapers>0) {
-                pPaper.src="paper.png";
+                pPaper.style.display="inline"
                 pPaperCounter.style.display="inline";
-                if (pPaper.onclick="") {
-                    pPaper.onclick=playerChoice(2);
-                }
             }
             else {
-                pPaper.src="transparent.png";
+                pPaper.style.display="none";
                 pPaperCounter.style.display="none";
-                pPaper.onclick="";
             }
             if (userScissors>0) {
-                pScissors.src="scissors.png";
+                pScissors.style.display="inline";
                 pScissorsCounter.style.display="inline";
-                if (pScissors.onclick="") {
-                    pScissors.onclick=playerChoice(3);
-                }
             }
             else {
-                pScissors.src="transparent.png";
+                pScissors.style.display="none";
                 pScissorsCounter.style.display="none";
-                pScissors.onclick="";
             }
             if (comRocks>0) {
                 cRock.src="rock.png";
@@ -253,15 +241,21 @@
             <div>Player</div>
             <div class="container">
                 <div class="counter" id="pRockCounter">5</div>
-                <img id="pRock" src="rock.png" onclick="playerChoice(1);">
+                <div class="placeholder">
+                    <img id="pRock" src="rock.png" onclick="playerChoice(1);">
+                </div>
             </div>
             <div class="container">
                 <div class="counter" id="pPaperCounter">5</div>
-                <img id="pPaper" src="paper.png" onclick="playerChoice(2);">
+                <div class="placeholder">
+                    <img id="pPaper" src="paper.png" onclick="playerChoice(2);">
+                </div>
             </div>
             <div class="container">
                 <div class="counter" id="pScissorsCounter">5</div>
-                <img id="pScissors" src="scissors.png" onclick="playerChoice(3);">
+                <div class="placeholder">
+                    <img id="pScissors" src="scissors.png" onclick="playerChoice(3);">
+                </div>
             </div>
         </div>
         <div id="fightZone">
@@ -275,15 +269,21 @@
         <div id="cItems">
             <div>Computer</div>
             <div class="container">
-                <img id="cRock" src="rock.png">
+                <div class="placeholder">
+                    <img id="cRock" src="rock.png">
+                </div>
                 <div class="counter" id="cRockCounter">5</div>
             </div>
             <div class="container">
-                <img id="cPaper" src="paper.png">
+                <div class="placeholder">
+                    <img id="cPaper" src="paper.png">
+                </div>
                 <div class="counter" id="cPaperCounter">5</div>
             </div>
             <div class="container">
-                <img id="cScissors" src="scissors.png">
+                <div class="placeholder">
+                    <img id="cScissors" src="scissors.png">
+                </div>
                 <div class="counter" id="cScissorsCounter">5</div>
             </div>
         </div>
