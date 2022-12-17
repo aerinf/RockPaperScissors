@@ -40,10 +40,15 @@
             if (choice==1 && comRocks>0) {
                 return 1;
             }
-            else if (choice==2 && comPapers==2) {
+            else if (choice==2 && comPapers>0) {
                 return 2;
             }
-            return 3;
+            else if (choice==3 && comScissors>0) {
+                return 3;
+            }
+            else {
+                return computerChoice();
+            }
         }
         function playerChoice(choice) {
             console.log(run);
@@ -232,7 +237,6 @@
                 run=false;
             }
         }
-        
     </script>
 </head>
 <body onload="initialize();">
@@ -288,7 +292,7 @@
             </div>
         </div>
     </div>
-    <div id="textbox">Click one of your items to fight the computer in rock-paper-scissors. The winner will take the loser's object. The numbers left of the objects indicate the number of those remaining. The game ends when one user has nothing left. If you ever play an item more than three times in a row, it will be removed from the game - so don't!</div>
+    <div id="textbox">Click one of your items to fight the computer in rock-paper-scissors. The winner will take the loser's object. The numbers left of the objects indicate the number of those remaining. The game ends when one user has nothing left.</div>
     <button onclick="reset();">Reset</button>
 </body>
 </html>
